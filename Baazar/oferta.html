@@ -10,6 +10,7 @@
       background: linear-gradient(135deg, #2f3d55, #435872);
       color: #222;
       margin: 0;
+      overflow-x: hidden;
     }
 
     header {
@@ -61,7 +62,6 @@
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      position: relative;
     }
 
     input, textarea, select {
@@ -104,6 +104,47 @@
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-5px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSYWNOŚĆ */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+      }
+
+      header a {
+        width: 100%;
+        text-align: center;
+      }
+
+      form {
+        margin: 1rem;
+        padding: 1.2rem;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      input, textarea, select {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      form {
+        padding: 1rem;
+      }
+
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .logo img {
+        height: 1.4rem;
+      }
     }
   </style>
 </head>
@@ -169,7 +210,7 @@
         })
         .catch((error) => {
           console.error("EmailJS error:", error);
-          alert("Błąd wysyłania. Sprawdź konfigurację EmailJS lub spróbuj ponownie później.");
+          alert("Błąd wysyłania. Spróbuj ponownie później.");
         });
     });
   </script>
