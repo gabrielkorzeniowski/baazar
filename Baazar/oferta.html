@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dodaj ogłoszenie – Baazar Twierdzy</title>
   <style>
+    /* === PODSTAWOWE STYLOWANIE === */
     body {
       font-family: "Segoe UI", sans-serif;
       background: linear-gradient(135deg, #2f3d55, #435872);
       color: #222;
       margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       overflow-x: hidden;
     }
 
@@ -20,6 +26,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      width: 100%;
+      max-width: 1000px;
+      box-sizing: border-box;
       flex-wrap: wrap;
     }
 
@@ -39,6 +48,7 @@
     header h1 {
       margin: 0;
       font-size: 1.4rem;
+      white-space: nowrap;
     }
 
     header a {
@@ -55,22 +65,42 @@
       background: #e2e8f0;
     }
 
+    /* === FORMULARZ === */
     form {
+      background: white;
+      width: 90%;
       max-width: 600px;
       margin: 2rem auto;
-      background: white;
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    form label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
     }
 
     input, textarea, select {
       width: 100%;
+      box-sizing: border-box;
       margin-bottom: 1rem;
       padding: 0.6rem;
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 1rem;
+      background-color: #fff;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #0d3b66;
+      box-shadow: 0 0 4px rgba(13, 59, 102, 0.3);
     }
 
     button {
@@ -82,6 +112,9 @@
       cursor: pointer;
       font-size: 1rem;
       transition: background 0.3s;
+      align-self: center;
+      width: 100%;
+      max-width: 250px;
     }
 
     button:hover {
@@ -106,7 +139,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* RESPONSYWNOŚĆ */
+    /* === RESPONSYWNOŚĆ === */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -120,30 +153,35 @@
       }
 
       form {
-        margin: 1rem;
+        margin: 1rem auto;
         padding: 1.2rem;
+      }
+
+      input, textarea, select {
+        font-size: 0.95rem;
       }
 
       button {
         width: 100%;
       }
 
-      input, textarea, select {
-        font-size: 0.95rem;
+      header h1 {
+        font-size: 1.2rem;
       }
     }
 
     @media (max-width: 480px) {
-      form {
+      .logo img {
+        height: 1.4rem;
+      }
+
+      header {
         padding: 1rem;
       }
 
-      header h1 {
-        font-size: 1.2rem;
-      }
-
-      .logo img {
-        height: 1.4rem;
+      form {
+        width: 92%;
+        padding: 1rem;
       }
     }
   </style>
@@ -160,17 +198,17 @@
   <form id="offerForm">
     <div class="success" id="successMsg">✅ Twoje ogłoszenie zostało wysłane do akceptacji. Dziękujemy!</div>
 
-    <label>Tytuł ogłoszenia:</label>
-    <input type="text" name="Tytuł" required>
+    <label for="title">Tytuł ogłoszenia:</label>
+    <input id="title" type="text" name="Tytuł" required>
 
-    <label>Opis:</label>
-    <textarea name="Opis" rows="4" required></textarea>
+    <label for="desc">Opis:</label>
+    <textarea id="desc" name="Opis" rows="4" required></textarea>
 
-    <label>Cena:</label>
-    <input type="text" name="Cena" required>
+    <label for="price">Cena:</label>
+    <input id="price" type="text" name="Cena" required>
 
-    <label>Kategoria:</label>
-    <select name="Kategoria" required>
+    <label for="category">Kategoria:</label>
+    <select id="category" name="Kategoria" required>
       <option value="">Wybierz kategorię</option>
       <option>Mundury</option>
       <option>Bojówki</option>
@@ -180,8 +218,8 @@
       <option>Inne</option>
     </select>
 
-    <label>Kontakt (e-mail lub telefon):</label>
-    <input type="text" name="Kontakt" required>
+    <label for="contact">Kontakt (e-mail lub telefon):</label>
+    <input id="contact" type="text" name="Kontakt" required>
 
     <button type="submit">Wyślij ogłoszenie</button>
   </form>
