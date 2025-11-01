@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baazar Twierdzy</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #2f3d55, #435872);
+      color: #222;
+      margin: 0;
+    }
+
+    header {
+      background: #0a284b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo img {
+      height: 1.6rem; /* dopasowane do wysokości h1 */
+      width: auto;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    header a {
+      background: white;
+      color: #0d3b66;
+      text-decoration: none;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    header a:hover {
+      background: #e2e8f0;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .filters {
+      text-align: center;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      background: #0d3b66;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #1456a8;
+    }
+
+    .offers {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .offer {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      padding: 1.2rem 1.5rem;
+      transition: transform 0.2s;
+    }
+
+    .offer:hover {
+      transform: translateY(-3px);
+    }
+
+    .offer h3 {
+      margin: 0 0 0.4rem;
+      color: #0d3b66;
+    }
+
+    .offer p {
+      margin: 0.3rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/twierdza.jpg" alt="Logo Twierdzy">
+      <h1>Baazar Twierdzy</h1>
+    </div>
+    <a href="oferta.html">➕ Dodaj ogłoszenie</a>
+  </header>
+
+  <main>
+    <div class="filters">
+      <button class="filter-btn active" data-category="Wszystko">Wszystko</button>
+      <button class="filter-btn" data-category="Mundury">Mundury</button>
+      <button class="filter-btn" data-category="Bojówki">Bojówki</button>
+      <button class="filter-btn" data-category="Spódnice">Spódnice</button>
+      <button class="filter-btn" data-category="Buty">Buty</button>
+      <button class="filter-btn" data-category="Książki">Książki</button>
+      <button class="filter-btn" data-category="Inne">Inne</button>
+    </div>
+
+    <div class="offers" id="offers">
+      <!-- Początek ogłoszeń -->
+	  
+	  
+	  
+	  
+<div class="offer" data-category="Bojówki">
+        <div class="content">
+          <h3>Testowy tytuł</h3>
+          <p>Testowy opis</p>
+          <p><strong>Cena:</strong> bezcenne</p>
+          <p><strong>Kategoria:</strong> Bojówki</p>
+          <p><strong>Kontakt:</strong> 997</p>
+        </div>
+      </div>
+
+
+
+
+      <!-- Koniec ogłoszeń -->
+    </div>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const offers = document.querySelectorAll('.offer');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.dataset.category;
+
+        offers.forEach(offer => {
+          if (category === 'Wszystko' || offer.dataset.category === category) {
+            offer.style.display = 'block';
+          } else {
+            offer.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
