@@ -10,6 +10,7 @@
       background: linear-gradient(135deg, #2f3d55, #435872);
       color: #222;
       margin: 0;
+      overflow-x: hidden;
     }
 
     header {
@@ -29,7 +30,7 @@
     }
 
     .logo img {
-      height: 1.6rem; /* dopasowane do wysokości h1 */
+      height: 1.6rem;
       width: auto;
       border-radius: 4px;
       object-fit: contain;
@@ -111,6 +112,51 @@
     .offer p {
       margin: 0.3rem 0;
     }
+
+    /* RESPONSYWNOŚĆ */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+      }
+
+      header a {
+        width: 100%;
+        text-align: center;
+      }
+
+      .offer {
+        padding: 1rem;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .logo h1 {
+        font-size: 1.2rem;
+      }
+
+      main {
+        padding: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .offer {
+        font-size: 0.95rem;
+      }
+
+      .filter-btn {
+        flex: 1 1 45%;
+      }
+
+      header a {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -134,25 +180,15 @@
     </div>
 
     <div class="offers" id="offers">
-      <!-- Początek ogłoszeń -->
-	  
-	  
-	  
-	  
-<div class="offer" data-category="Bojówki">
+      <div class="offer" data-category="Bojówki">
         <div class="content">
-          <h3>Testowy </h3>
-          <p>Testowy </p>
-          <p><strong>Cena:</strong> 112</p>
+          <h3>Testowy</h3>
+          <p>Testowy opis</p>
+          <p><strong>Cena:</strong> 112 zł</p>
           <p><strong>Kategoria:</strong> Bojówki</p>
           <p><strong>Kontakt:</strong> 133</p>
         </div>
       </div>
-
-
-
-
-      <!-- Koniec ogłoszeń -->
     </div>
   </main>
 
@@ -167,15 +203,12 @@
         const category = btn.dataset.category;
 
         offers.forEach(offer => {
-          if (category === 'Wszystko' || offer.dataset.category === category) {
-            offer.style.display = 'block';
-          } else {
-            offer.style.display = 'none';
-          }
+          offer.style.display = (category === 'Wszystko' || offer.dataset.category === category)
+            ? 'block'
+            : 'none';
         });
       });
     });
   </script>
 </body>
 </html>
-
